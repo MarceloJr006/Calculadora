@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muito vinho</title>
+    <link rel="shortcut icon" type="imagex/png" href="https://cdn-icons-png.flaticon.com/512/168/168570.png">
+</head>
+<body id="body">
+<center><div class="fontes">
+    <h1>Olá Marilene</h1>
+    <h1>faça a sua conta.</h1>
+</div>
+    <input id="campo1" type="number" />
+        <select id="operador">
+            <option value="+" selected>+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+            <option value="%">%</option>
+        </select>
+    <input id="campo2" type="number" /><br> <br>
+    <img src="https://i.ytimg.com/vi/icrqv1ptUBA/maxresdefault.jpg" alt="" class="img1" width="400px" height="200px">
+    <br>
+    <span id="resultado"></span>
+    
+</center>
+
+<script>
+    var campo1 = document.getElementById("campo1");
+    var campo2 = document.getElementById("campo2");
+    var operador = document.getElementById("operador");
+    var resultado = document.getElementById("resultado");
+    var somenteNumeros = new RegExp("[^0-9]", "g");
+
+var toNumber = function (value) {
+  var number = value.replace(somenteNumeros, "");    
+  number = parseInt(number);    
+  if (isNaN(number)) 
+    number = 0;
+  return number;
+}
+
+var somenteNumeros = function (event) {
+  event.target.value = toNumber(event.target.value);
+}
+
+var onInput = function (event) {
+  var num1 = toNumber(campo1.value);
+  var num2 = toNumber(campo2.value);
+  var calc = num1 + " " + operador.value + " " + num2
+  resultado.textContent = calc + " = " + eval(calc);
+}
+
+    campo1.addEventListener("input", somenteNumeros);
+    campo2.addEventListener("input", somenteNumeros);
+
+    campo1.addEventListener("input", onInput);
+    campo2.addEventListener("input", onInput);
+    operador.addEventListener("input", onInput);
+
+onInput();
+</script>
+<style>
+    #operador {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -o-appearance: none;
+  border: 1px solid black;
+  border-radius: 10px;
+  text-align: center;
+  background-color: antiquewhite;
+  box-shadow: 10px 5px 5px black;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+#campo1{
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: antiquewhite;
+    box-shadow: 10px 5px 5px black;
+    text-align: center;
+    font-size: 25px;
+}
+
+#operador{
+    font-size: 25px;
+}
+
+#campo2{
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: antiquewhite;
+    box-shadow: 10px 5px 5px black;
+    text-align: center;
+    font-size: 25px;
+}
+#resultado{
+    border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: 10px 5px 5px black;
+    padding: 4px;
+    background-color: antiquewhite;
+    font-size: 45px;
+}
+#body{
+    background-color: aqua;
+}
+
+.fontes h1{
+    text-shadow: 0.1em 0.1em 0.2em black;
+    font-size: 70px;
+}
+.img1{
+    padding-bottom: 10px;
+}
+</style>
+</body>
+</html>
